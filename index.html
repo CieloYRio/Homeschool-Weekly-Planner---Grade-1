@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 1 Weekly Homeschool Schedule</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 120px repeat(5, 1fr);
+            gap: 1px;
+            background: #e0e0e0;
+            margin: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .time-slot, .day-header, .subject-cell {
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .time-slot {
+            background: #f8f9fa;
+            color: #495057;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .subject-cell {
+            background: white;
+            border-radius: 5px;
+            margin: 2px;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+
+        .subject-cell:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .math { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
+        .phonics { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+        .filipino { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+        .science { background: linear-gradient(135deg, #a8e6cf, #dcedc1); }
+        .bible { background: linear-gradient(135deg, #d299c2, #fef9d7); }
+        .araling { background: linear-gradient(135deg, #89f7fe, #66a6ff); }
+        .spelling { background: linear-gradient(135deg, #fdbb2d, #22c1c3); }
+        .french { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .break { background: linear-gradient(135deg, #ffeaa7, #fab1a0); }
+        .review { background: linear-gradient(135deg, #fd79a8, #fdcb6e); }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .tips {
+            padding: 30px;
+            background: white;
+        }
+
+        .tips h3 {
+            color: #2d3436;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .tip-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .tip-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tip-card li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .tip-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00b894;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .schedule-grid {
+                grid-template-columns: 80px repeat(5, 1fr);
+                margin: 10px;
+            }
+            
+            .subject-cell, .time-slot {
+                padding: 8px 5px;
+                font-size: 0.75rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Grade 1 Weekly Schedule</h1>
+            <p>Optimized Learning Plan for English-speaking Student Learning Filipino</p>
+        </div>
+
+        <div class="schedule-grid">
+            <div class="time-slot">Time</div>
+            <div class="day-header">Monday</div>
+            <div class="day-header">Tuesday</div>
+            <div class="day-header">Wednesday</div>
+            <div class="day-header">Thursday</div>
+            <div class="day-header">Friday</div>
+
+            <div class="time-slot">8:30-9:15</div>
+            <div class="subject-cell math">Math 1<br><small>Daily Practice</small></div>
+            <div class="subject-cell math">Math 1<br><small>Daily Practice</small></div>
+            <div class="subject-cell math">Math 1<br><small>Daily Practice</small></div>
+            <div class="subject-cell math">Math 1<br><small>Daily Practice</small></div>
+            <div class="subject-cell math">Math 1<br><small>Weekly Review</small></div>
+
+            <div class="time-slot">9:15-9:30</div>
+            <div class="subject-cell break">🍎 Snack Break</div>
+            <div class="subject-cell break">🍎 Snack Break</div>
+            <div class="subject-cell break">🍎 Snack Break</div>
+            <div class="subject-cell break">🍎 Snack Break</div>
+            <div class="subject-cell break">🍎 Snack Break</div>
+
+            <div class="time-slot">9:30-10:15</div>
+            <div class="subject-cell phonics">Phonics & Reading 1<br><small>Daily Building</small></div>
+            <div class="subject-cell phonics">Phonics & Reading 1<br><small>Daily Building</small></div>
+            <div class="subject-cell phonics">Phonics & Reading 1<br><small>Daily Building</small></div>
+            <div class="subject-cell phonics">Phonics & Reading 1<br><small>Daily Building</small></div>
+            <div class="subject-cell phonics">Phonics & Reading 1<br><small>Story Time</small></div>
+
+            <div class="time-slot">10:15-10:30</div>
+            <div class="subject-cell break">🏃 Movement Break</div>
+            <div class="subject-cell break">🏃 Movement Break</div>
+            <div class="subject-cell break">🏃 Movement Break</div>
+            <div class="subject-cell break">🏃 Movement Break</div>
+            <div class="subject-cell break">🏃 Movement Break</div>
+
+            <div class="time-slot">10:30-11:15</div>
+            <div class="subject-cell filipino">Filipino 1<br><small>Daily Immersion</small></div>
+            <div class="subject-cell filipino">Filipino 1<br><small>Daily Immersion</small></div>
+            <div class="subject-cell filipino">Filipino 1<br><small>Daily Immersion</small></div>
+            <div class="subject-cell filipino">Filipino 1<br><small>Daily Immersion</small></div>
+            <div class="subject-cell filipino">Filipino 1<br><small>Songs & Games</small></div>
+
+            <div class="time-slot">11:15-11:30</div>
+            <div class="subject-cell break">🧘 Quiet Break</div>
+            <div class="subject-cell break">🧘 Quiet Break</div>
+            <div class="subject-cell break">🧘 Quiet Break</div>
+            <div class="subject-cell break">🧘 Quiet Break</div>
+            <div class="subject-cell break">🧘 Quiet Break</div>
+
+            <div class="time-slot">11:30-12:00</div>
+            <div class="subject-cell bible">Bible 1<br><small>Daily Devotion</small></div>
+            <div class="subject-cell bible">Bible 1<br><small>Daily Devotion</small></div>
+            <div class="subject-cell bible">Bible 1<br><small>Daily Devotion</small></div>
+            <div class="subject-cell bible">Bible 1<br><small>Daily Devotion</small></div>
+            <div class="subject-cell bible">Bible 1<br><small>Weekly Reflection</small></div>
+
+            <div class="time-slot">12:00-12:15</div>
+            <div class="subject-cell break">🍽️ Lunch Break</div>
+            <div class="subject-cell break">🍽️ Lunch Break</div>
+            <div class="subject-cell break">🍽️ Lunch Break</div>
+            <div class="subject-cell break">🍽️ Lunch Break</div>
+            <div class="subject-cell break">🍽️ Lunch Break</div>
+
+            <div class="time-slot">12:15-1:15</div>
+            <div class="subject-cell science">Science 1<br><small>Deep Exploration</small></div>
+            <div class="subject-cell spelling">Spelling 1<br><small>Focused Practice</small></div>
+            <div class="subject-cell araling">Araling Panlipunan 1<br><small>Cultural Deep Dive</small></div>
+            <div class="subject-cell french">French Practice<br><small>Extended Session</small></div>
+            <div class="subject-cell review">📝 Weekly Review<br><small>All Subjects</small></div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color math"></div>
+                <span><strong>Math 1:</strong> Core numeracy skills, patterns, basic operations</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color phonics"></div>
+                <span><strong>Phonics & Reading:</strong> Foundation literacy, letter-sound relationships</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color filipino"></div>
+                <span><strong>Filipino 1:</strong> Basic vocabulary, cultural introduction</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color spelling"></div>
+                <span><strong>Spelling 1:</strong> Word recognition, writing practice</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color science"></div>
+                <span><strong>Science 1:</strong> Observation skills, basic concepts</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color bible"></div>
+                <span><strong>Bible 1:</strong> Character building, moral lessons</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color araling"></div>
+                <span><strong>Araling Panlipunan:</strong> Social awareness, Filipino culture</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color french"></div>
+                <span><strong>French Practice:</strong> Continuing language development</span>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h3>🎯 Research-Based Learning Optimization</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>📚 Daily Core Subjects</h4>
+                    <ul>
+                        <li>Math, Phonics, Filipino, Bible every day</li>
+                        <li>Builds neural pathways through repetition</li>
+                        <li>Creates automatic skill development</li>
+                        <li>Prevents "starting over" each session</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h4>🔄 Alternating Deep Dives</h4>
+                    <ul>
+                        <li>Science, Spelling, Araling Panlipunan rotate</li>
+                        <li>Longer sessions for project-based learning</li>
+                        <li>Spaced repetition improves retention</li>
+                        <li>Quality focus over quantity exposure</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h4>🌟 Filipino Immersion Strategy</h4>
+                    <ul>
+                        <li>Daily 45-minute sessions for rapid acquisition</li>
+                        <li>Start with cognates and familiar concepts</li>
+                        <li>Use songs, games, and visual aids</li>
+                        <li>Connect to cultural lessons on Wednesdays</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h4>⛪ Daily Bible Integration</h4>
+                    <ul>
+                        <li>Consistent character building foundation</li>
+                        <li>30-minute devotional approach</li>
+                        <li>Connects moral lessons to daily life</li>
+                        <li>Friday reflection reinforces weekly themes</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h4>🧠 Cognitive Load Management</h4>
+                    <ul>
+                        <li>Morning hours for high-focus subjects</li>
+                        <li>Regular breaks prevent mental fatigue</li>
+                        <li>Lunch break before afternoon deep dive</li>
+                        <li>Friday review consolidates learning</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h4>🎯 Implementation Tips</h4>
+                    <ul>
+                        <li>Use manipulatives and hands-on activities</li>
+                        <li>Celebrate daily small wins</li>
+                        <li>Track progress with simple charts</li>
+                        <li>Adjust pace based on child's energy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactive hover effects and click functionality
+        document.querySelectorAll('.subject-cell').forEach(cell => {
+            cell.addEventListener('click', function() {
+                const subject = this.textContent.split('\n')[0];
+                const time = this.parentElement.children[0].textContent;
+                
+                // Create a simple notification
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(135deg, #00b894, #00cec9);
+                    color: white;
+                    padding: 15px 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                    z-index: 1000;
+                    font-weight: 600;
+                    animation: slideIn 0.3s ease;
+                `;
+                
+                notification.innerHTML = `📚 ${subject}<br><small>Scheduled for ${time}</small>`;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                }, 2000);
+            });
+        });
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add subject rotation for variety
+        const subjects = {
+            math: ['Numbers & Counting', 'Shapes & Patterns', 'Addition Basics', 'Measurement Fun', 'Review & Games'],
+            phonics: ['Letter Sounds', 'Sight Words', 'Blending Practice', 'Reading Stories', 'Phonics Games'],
+            filipino: ['Basic Greetings', 'Family Words', 'Colors & Numbers', 'Simple Sentences', 'Songs & Stories'],
+            science: ['Living Things', 'Weather & Seasons', 'My Body', 'Plants & Animals', 'Nature Walk'],
+            bible: ['Creation Stories', 'Noah\'s Ark', 'Bible Characters', 'Kindness Lessons', 'Prayer Time'],
+            araling: ['My Family', 'My School', 'My Community', 'Filipino Heroes', 'Our Country'],
+            spelling: ['Simple Words', 'Word Families', 'Practice & Review', 'Spelling Games', 'Writing Fun']
+        };
+
+        // Function to update weekly content (could be expanded)
+        function updateWeeklyContent() {
+            console.log('Weekly content rotation available for curriculum variety');
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96ceec3b669cbac4',t:'MTc1NDgyMjkyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
