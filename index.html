@@ -45,6 +45,38 @@
             opacity: 0.9;
         }
 
+         .week-selector {
+            padding: 20px;
+            text-align: center;
+            background: #ecf0f1;
+        }
+
+        .week-selector input {
+            padding: 12px 20px;
+            border: 2px solid #bdc3c7;
+            border-radius: 25px;
+            font-size: 1rem;
+            margin: 0 10px;
+            background: white;
+        }
+
+        .week-selector button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .week-selector button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
         .schedule-grid {
             display: grid;
             grid-template-columns: 120px repeat(5, 1fr);
