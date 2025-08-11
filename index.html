@@ -19,12 +19,115 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 0;
+        }
+
+        .main-content {
+            background: white;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-left: 1px solid #dee2e6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .weekly-summary {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .weekly-summary h3 {
+            color: #2d3436;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .summary-table th {
+            background: linear-gradient(135deg, #636e72, #2d3436);
+            color: white;
+            padding: 12px 8px;
+            text-align: left;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .summary-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .summary-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .summary-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+
+        .summary-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .summary-table tr:hover {
+            background: #e3f2fd;
+        }
+
+        .summary-table td:first-child {
+            font-weight: 600;
+            color: #2d3436;
+        }
+
+        .summary-table td:last-child {
+            color: #636e72;
+        }
+
+        .editable-target {
+            background: transparent;
+            border: none;
+            width: 100%;
+            font-size: 0.85rem;
+            color: #636e72;
+            padding: 2px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .editable-target:hover {
+            background: #fff;
+            border: 1px solid #74b9ff;
+        }
+
+        .editable-target:focus {
+            outline: none;
+            background: #fff;
+            border: 1px solid #74b9ff;
+            box-shadow: 0 0 0 2px rgba(116, 185, 255, 0.1);
         }
 
         .header {
@@ -79,6 +182,70 @@
             padding: 10px 20px;
             background: rgba(255,255,255,0.2);
             border-radius: 10px;
+        }
+
+        .calendar-section {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .calendar-header h4 {
+            color: white;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .set-start-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .set-start-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-1px);
+        }
+
+        .date-display {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        .date-item {
+            background: rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .day-name {
+            display: block;
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .date-value {
+            display: block;
+            font-weight: bold;
+            font-size: 0.9rem;
         }
 
         .schedule-grid {
@@ -147,6 +314,9 @@
         .spelling { background: linear-gradient(135deg, #AB47BC, #9C27B0); color: white; }
         .araling { background: linear-gradient(135deg, #42A5F5, #2196F3); color: white; }
         .french { background: linear-gradient(135deg, #5C6BC0, #3F51B5); color: white; }
+        .starter { background: linear-gradient(135deg, #FFA726, #FF7043); color: white; }
+        .mapeh { background: linear-gradient(135deg, #26A69A, #00ACC1); color: white; }
+        .open { background: linear-gradient(135deg, #BDBDBD, #9E9E9E); color: white; }
         .breakfast { background: linear-gradient(135deg, #FFB74D, #FF9800); color: white; }
         .break { background: linear-gradient(135deg, #81C784, #4CAF50); color: white; }
         .review { background: linear-gradient(135deg, #E57373, #F44336); color: white; }
@@ -290,6 +460,89 @@
             transform: translateY(-2px);
         }
 
+        /* Notes Section Styles */
+        .notes-section {
+            padding: 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .notes-section h3 {
+            color: #2d3436;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .notes-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        #teacherNotes {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        #teacherNotes:focus {
+            border-color: #74b9ff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.1);
+        }
+
+        .notes-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: flex-end;
+        }
+
+        .notes-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .save-notes {
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            color: white;
+        }
+
+        .clear-notes {
+            background: linear-gradient(135deg, #e17055, #d63031);
+            color: white;
+        }
+
+        .notes-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                max-width: 1200px;
+            }
+            
+            .sidebar {
+                border-left: none;
+                border-top: 1px solid #dee2e6;
+                min-height: auto;
+            }
+        }
+
         @media (max-width: 768px) {
             .schedule-grid {
                 grid-template-columns: 80px repeat(5, 1fr);
@@ -308,11 +561,43 @@
             .tips-grid {
                 grid-template-columns: 1fr;
             }
+
+            .date-display {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 5px;
+            }
+
+            .date-item {
+                padding: 8px 5px;
+            }
+
+            .day-name {
+                font-size: 0.7rem;
+            }
+
+            .date-value {
+                font-size: 0.8rem;
+            }
+
+            .calendar-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .sidebar {
+                padding: 15px;
+            }
+
+            .weekly-summary {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="main-content">
         <div class="header">
             <h1>📚 Grade 1 Weekly Schedule - KSA</h1>
             <p>Sunday to Thursday • Optimized Learning Plan</p>
@@ -321,6 +606,35 @@
                 <button class="week-btn" onclick="changeWeek(-1)">← Previous Week</button>
                 <div class="current-week" id="currentWeek">This Week</div>
                 <button class="week-btn" onclick="changeWeek(1)">Next Week →</button>
+            </div>
+
+            <div class="calendar-section">
+                <div class="calendar-header">
+                    <h4>📅 Week Dates</h4>
+                    <button class="set-start-btn" onclick="setStartDate()">Set Start Date</button>
+                </div>
+                <div class="date-display" id="weekDates">
+                    <div class="date-item">
+                        <span class="day-name">Sunday</span>
+                        <span class="date-value" id="sunday-date">Aug 17</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="day-name">Monday</span>
+                        <span class="date-value" id="monday-date">Aug 18</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="day-name">Tuesday</span>
+                        <span class="date-value" id="tuesday-date">Aug 19</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="day-name">Wednesday</span>
+                        <span class="date-value" id="wednesday-date">Aug 20</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="day-name">Thursday</span>
+                        <span class="date-value" id="thursday-date">Aug 21</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -339,71 +653,89 @@
             <div class="subject-cell breakfast">🍳 Breakfast<br><small>Family Time</small></div>
             <div class="subject-cell breakfast">🍳 Breakfast<br><small>Family Time</small></div>
 
-            <div class="time-slot">9:00-9:45</div>
-            <div class="subject-cell bible editable" data-subject="bible" data-day="sunday" data-time="9:00-9:45">Bible 1<br><small>Daily Devotion</small></div>
-            <div class="subject-cell bible editable" data-subject="bible" data-day="monday" data-time="9:00-9:45">Bible 1<br><small>Daily Devotion</small></div>
-            <div class="subject-cell bible editable" data-subject="bible" data-day="tuesday" data-time="9:00-9:45">Bible 1<br><small>Daily Devotion</small></div>
-            <div class="subject-cell bible editable" data-subject="bible" data-day="wednesday" data-time="9:00-9:45">Bible 1<br><small>Daily Devotion</small></div>
-            <div class="subject-cell bible editable" data-subject="bible" data-day="thursday" data-time="9:00-9:45">Bible 1<br><small>Weekly Reflection</small></div>
+            <div class="time-slot">9:00-9:20</div>
+            <div class="subject-cell starter editable" data-subject="starter" data-day="sunday" data-time="9:00-9:20">🌅 Week Starter<br><small>Goals & Prayer</small></div>
+            <div class="subject-cell bible editable" data-subject="bible" data-day="monday" data-time="9:00-9:20">Bible 1<br><small>Daily Devotion</small></div>
+            <div class="subject-cell bible editable" data-subject="bible" data-day="tuesday" data-time="9:00-9:20">Bible 1<br><small>Daily Devotion</small></div>
+            <div class="subject-cell bible editable" data-subject="bible" data-day="wednesday" data-time="9:00-9:20">Bible 1<br><small>Daily Devotion</small></div>
+            <div class="subject-cell bible editable" data-subject="bible" data-day="thursday" data-time="9:00-9:20">Bible 1<br><small>Weekly Reflection</small></div>
 
-            <div class="time-slot">9:45-10:00</div>
+            <div class="time-slot">9:20-9:30</div>
             <div class="subject-cell break">🧘 Quiet Break</div>
             <div class="subject-cell break">🧘 Quiet Break</div>
             <div class="subject-cell break">🧘 Quiet Break</div>
             <div class="subject-cell break">🧘 Quiet Break</div>
             <div class="subject-cell break">🧘 Quiet Break</div>
 
-            <div class="time-slot">10:00-10:45</div>
-            <div class="subject-cell math editable" data-subject="math" data-day="sunday" data-time="10:00-10:45">Math 1<br><small>Daily Practice</small></div>
-            <div class="subject-cell math editable" data-subject="math" data-day="monday" data-time="10:00-10:45">Math 1<br><small>Daily Practice</small></div>
-            <div class="subject-cell math editable" data-subject="math" data-day="tuesday" data-time="10:00-10:45">Math 1<br><small>Daily Practice</small></div>
-            <div class="subject-cell math editable" data-subject="math" data-day="wednesday" data-time="10:00-10:45">Math 1<br><small>Daily Practice</small></div>
-            <div class="subject-cell math editable" data-subject="math" data-day="thursday" data-time="10:00-10:45">Math 1<br><small>Weekly Review</small></div>
+            <div class="time-slot">9:30-10:00</div>
+            <div class="subject-cell math editable" data-subject="math" data-day="sunday" data-time="9:30-10:00">Math 1<br><small>Daily Practice</small></div>
+            <div class="subject-cell math editable" data-subject="math" data-day="monday" data-time="9:30-10:00">Math 1<br><small>Daily Practice</small></div>
+            <div class="subject-cell math editable" data-subject="math" data-day="tuesday" data-time="9:30-10:00">Math 1<br><small>Daily Practice</small></div>
+            <div class="subject-cell math editable" data-subject="math" data-day="wednesday" data-time="9:30-10:00">Math 1<br><small>Daily Practice</small></div>
+            <div class="subject-cell math editable" data-subject="math" data-day="thursday" data-time="9:30-10:00">Math 1<br><small>Weekly Review</small></div>
+
+            <div class="time-slot">10:00-10:15</div>
+            <div class="subject-cell break">🍎 Snack Break</div>
+            <div class="subject-cell break">🍎 Snack Break</div>
+            <div class="subject-cell break">🍎 Snack Break</div>
+            <div class="subject-cell break">🍎 Snack Break</div>
+            <div class="subject-cell break">🍎 Snack Break</div>
+
+            <div class="time-slot">10:15-10:45</div>
+            <div class="subject-cell phonics editable" data-subject="phonics" data-day="sunday" data-time="10:15-10:45">Phonics & Reading 1<br><small>Daily Building</small></div>
+            <div class="subject-cell phonics editable" data-subject="phonics" data-day="monday" data-time="10:15-10:45">Phonics & Reading 1<br><small>Daily Building</small></div>
+            <div class="subject-cell phonics editable" data-subject="phonics" data-day="tuesday" data-time="10:15-10:45">Phonics & Reading 1<br><small>Daily Building</small></div>
+            <div class="subject-cell phonics editable" data-subject="phonics" data-day="wednesday" data-time="10:15-10:45">Phonics & Reading 1<br><small>Daily Building</small></div>
+            <div class="subject-cell phonics editable" data-subject="phonics" data-day="thursday" data-time="10:15-10:45">Phonics & Reading 1<br><small>Story Time</small></div>
 
             <div class="time-slot">10:45-11:00</div>
-            <div class="subject-cell break">🍎 Snack Break</div>
-            <div class="subject-cell break">🍎 Snack Break</div>
-            <div class="subject-cell break">🍎 Snack Break</div>
-            <div class="subject-cell break">🍎 Snack Break</div>
-            <div class="subject-cell break">🍎 Snack Break</div>
-
-            <div class="time-slot">11:00-11:45</div>
-            <div class="subject-cell phonics editable" data-subject="phonics" data-day="sunday" data-time="11:00-11:45">Phonics & Reading 1<br><small>Daily Building</small></div>
-            <div class="subject-cell phonics editable" data-subject="phonics" data-day="monday" data-time="11:00-11:45">Phonics & Reading 1<br><small>Daily Building</small></div>
-            <div class="subject-cell phonics editable" data-subject="phonics" data-day="tuesday" data-time="11:00-11:45">Phonics & Reading 1<br><small>Daily Building</small></div>
-            <div class="subject-cell phonics editable" data-subject="phonics" data-day="wednesday" data-time="11:00-11:45">Phonics & Reading 1<br><small>Daily Building</small></div>
-            <div class="subject-cell phonics editable" data-subject="phonics" data-day="thursday" data-time="11:00-11:45">Phonics & Reading 1<br><small>Story Time</small></div>
-
-            <div class="time-slot">11:45-12:00</div>
             <div class="subject-cell break">🏃 Movement Break</div>
             <div class="subject-cell break">🏃 Movement Break</div>
             <div class="subject-cell break">🏃 Movement Break</div>
             <div class="subject-cell break">🏃 Movement Break</div>
             <div class="subject-cell break">🏃 Movement Break</div>
 
-            <div class="time-slot">12:00-12:45</div>
-            <div class="subject-cell filipino editable" data-subject="filipino" data-day="sunday" data-time="12:00-12:45">Filipino 1<br><small>Daily Immersion</small></div>
-            <div class="subject-cell filipino editable" data-subject="filipino" data-day="monday" data-time="12:00-12:45">Filipino 1<br><small>Daily Immersion</small></div>
-            <div class="subject-cell filipino editable" data-subject="filipino" data-day="tuesday" data-time="12:00-12:45">Filipino 1<br><small>Daily Immersion</small></div>
-            <div class="subject-cell filipino editable" data-subject="filipino" data-day="wednesday" data-time="12:00-12:45">Filipino 1<br><small>Daily Immersion</small></div>
-            <div class="subject-cell filipino editable" data-subject="filipino" data-day="thursday" data-time="12:00-12:45">Filipino 1<br><small>Songs & Games</small></div>
+            <div class="time-slot">11:00-11:25</div>
+            <div class="subject-cell filipino editable" data-subject="filipino" data-day="sunday" data-time="11:00-11:25">Filipino 1<br><small>Daily Immersion</small></div>
+            <div class="subject-cell filipino editable" data-subject="filipino" data-day="monday" data-time="11:00-11:25">Filipino 1<br><small>Daily Immersion</small></div>
+            <div class="subject-cell filipino editable" data-subject="filipino" data-day="tuesday" data-time="11:00-11:25">Filipino 1<br><small>Daily Immersion</small></div>
+            <div class="subject-cell filipino editable" data-subject="filipino" data-day="wednesday" data-time="11:00-11:25">Filipino 1<br><small>Daily Immersion</small></div>
+            <div class="subject-cell filipino editable" data-subject="filipino" data-day="thursday" data-time="11:00-11:25">Filipino 1<br><small>Songs & Games</small></div>
 
-            <div class="time-slot">12:45-1:30</div>
+            <div class="time-slot">11:25-11:45</div>
+            <div class="subject-cell french editable" data-subject="french" data-day="sunday" data-time="11:25-11:45">French Practice<br><small>Daily Session</small></div>
+            <div class="subject-cell french editable" data-subject="french" data-day="monday" data-time="11:25-11:45">French Practice<br><small>Daily Session</small></div>
+            <div class="subject-cell french editable" data-subject="french" data-day="tuesday" data-time="11:25-11:45">French Practice<br><small>Daily Session</small></div>
+            <div class="subject-cell french editable" data-subject="french" data-day="wednesday" data-time="11:25-11:45">French Practice<br><small>Daily Session</small></div>
+            <div class="subject-cell french editable" data-subject="french" data-day="thursday" data-time="11:25-11:45">French Practice<br><small>Weekly Review</small></div>
+
+            <div class="time-slot">11:45-12:30</div>
             <div class="subject-cell break">🍽️ Lunch Break</div>
             <div class="subject-cell break">🍽️ Lunch Break</div>
             <div class="subject-cell break">🍽️ Lunch Break</div>
             <div class="subject-cell break">🍽️ Lunch Break</div>
             <div class="subject-cell break">🍽️ Lunch Break</div>
 
-            <div class="time-slot">1:30-2:30</div>
-            <div class="subject-cell science editable" data-subject="science" data-day="sunday" data-time="1:30-2:30">Science 1<br><small>Deep Exploration</small></div>
-            <div class="subject-cell spelling editable" data-subject="spelling" data-day="monday" data-time="1:30-2:30">Spelling 1<br><small>Focused Practice</small></div>
-            <div class="subject-cell araling editable" data-subject="araling" data-day="tuesday" data-time="1:30-2:30">Araling Panlipunan 1<br><small>Cultural Deep Dive</small></div>
-            <div class="subject-cell french editable" data-subject="french" data-day="wednesday" data-time="1:30-2:30">French Practice<br><small>Extended Session</small></div>
-            <div class="subject-cell review editable" data-subject="review" data-day="thursday" data-time="1:30-2:30">📝 Weekly Review<br><small>All Subjects</small></div>
+            <div class="time-slot">12:30-1:00</div>
+            <div class="subject-cell science editable" data-subject="science" data-day="sunday" data-time="12:30-1:00">Science 1<br><small>Exploration A</small></div>
+            <div class="subject-cell spelling editable" data-subject="spelling" data-day="monday" data-time="12:30-1:00">Spelling 1<br><small>Practice A</small></div>
+            <div class="subject-cell mapeh editable" data-subject="mapeh" data-day="tuesday" data-time="12:30-1:00">MAPEH - Piano<br><small>External Class</small></div>
+            <div class="subject-cell science editable" data-subject="science" data-day="wednesday" data-time="12:30-1:00">Science 1<br><small>Exploration B</small></div>
+            <div class="subject-cell spelling editable" data-subject="spelling" data-day="thursday" data-time="12:30-1:00">Spelling 1<br><small>Practice B</small></div>
+
+            <div class="time-slot">1:00-1:30</div>
+            <div class="subject-cell araling editable" data-subject="araling" data-day="sunday" data-time="1:00-1:30">Araling Panlipunan 1<br><small>Cultural A</small></div>
+            <div class="subject-cell open editable" data-subject="open" data-day="monday" data-time="1:00-1:30">Open Slot<br><small>Future PE/Activity</small></div>
+            <div class="subject-cell mapeh editable" data-subject="mapeh" data-day="tuesday" data-time="1:00-1:30">MAPEH - Piano<br><small>External Class</small></div>
+            <div class="subject-cell araling editable" data-subject="araling" data-day="wednesday" data-time="1:00-1:30">Araling Panlipunan 1<br><small>Cultural B</small></div>
+            <div class="subject-cell review editable" data-subject="review" data-day="thursday" data-time="1:00-1:30">📝 Weekly Review<br><small>All Subjects</small></div>
         </div>
 
         <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color starter"></div>
+                <span><strong>Week Starter:</strong> Goal setting, prayer, and weekly preview</span>
+            </div>
             <div class="legend-item">
                 <div class="legend-color bible"></div>
                 <span><strong>Bible 1:</strong> Daily spiritual foundation and character building</span>
@@ -421,62 +753,159 @@
                 <span><strong>Filipino 1:</strong> Daily immersion for rapid language acquisition</span>
             </div>
             <div class="legend-item">
+                <div class="legend-color french"></div>
+                <span><strong>French Practice:</strong> Daily 20-min sessions for retention</span>
+            </div>
+            <div class="legend-item">
                 <div class="legend-color science"></div>
-                <span><strong>Science 1:</strong> Deep exploration and hands-on discovery</span>
+                <span><strong>Science 1:</strong> Twice weekly deep exploration and discovery</span>
             </div>
             <div class="legend-item">
                 <div class="legend-color spelling"></div>
-                <span><strong>Spelling 1:</strong> Focused word recognition and writing</span>
+                <span><strong>Spelling 1:</strong> Twice weekly focused practice and reinforcement</span>
             </div>
             <div class="legend-item">
                 <div class="legend-color araling"></div>
-                <span><strong>Araling Panlipunan:</strong> Cultural deep dive and social awareness</span>
+                <span><strong>Araling Panlipunan:</strong> Twice weekly cultural and social learning</span>
             </div>
             <div class="legend-item">
-                <div class="legend-color french"></div>
-                <span><strong>French Practice:</strong> Continuing multilingual development</span>
+                <div class="legend-color mapeh"></div>
+                <span><strong>MAPEH - Piano:</strong> External music classes integrated into curriculum</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color open"></div>
+                <span><strong>Open Slot:</strong> Reserved for future PE or additional activities</span>
+            </div>
+        </div>
+
+        <div class="notes-section">
+            <h3>📝 Teacher/Facilitator Notes</h3>
+            <div class="notes-container">
+                <textarea id="teacherNotes" placeholder="Add your weekly observations, student progress notes, adjustments needed, or any other teaching insights here...
+
+Example notes:
+- Student showed great improvement in phonics blending this week
+- Need to slow down on math addition - more practice needed
+- Filipino vocabulary retention is excellent
+- Piano lessons going well - consider adding music theory at home
+- Adjust Science experiments to be more hands-on"></textarea>
+                <div class="notes-actions">
+                    <button class="notes-btn save-notes" onclick="saveNotes()">💾 Save Notes</button>
+                    <button class="notes-btn clear-notes" onclick="clearNotes()">🗑️ Clear Notes</button>
+                </div>
             </div>
         </div>
 
         <div class="tips">
-            <h3>🎯 KSA-Optimized Learning Strategy</h3>
+            <h3>🎯 Research-Based Timing & Strategy</h3>
             <div class="tips-grid">
                 <div class="tip-card">
-                    <h4>⛪ Bible-First Approach</h4>
+                    <h4>⏱️ Optimal Session Lengths</h4>
                     <ul>
-                        <li>Spiritual foundation starts each day</li>
-                        <li>Creates calm, focused mindset for learning</li>
-                        <li>Character building integrated throughout</li>
-                        <li>Thursday reflection consolidates weekly themes</li>
+                        <li>20-30 min for Grade 1 core subjects (not 45 min)</li>
+                        <li>Shorter sessions prevent cognitive overload</li>
+                        <li>Frequent breaks maintain attention</li>
+                        <li>Quality focus over quantity time</li>
                     </ul>
                 </div>
                 <div class="tip-card">
-                    <h4>🧮 Math After Bible</h4>
+                    <h4>🔄 Content Subject Strategy</h4>
                     <ul>
-                        <li>Peak cognitive hours for complex thinking</li>
-                        <li>Spiritual grounding enhances focus</li>
-                        <li>Daily practice builds automaticity</li>
-                        <li>Research-proven optimal timing</li>
+                        <li>Science & Araling: Twice weekly for deeper learning</li>
+                        <li>Spelling: Twice weekly for skill reinforcement</li>
+                        <li>French: Daily 20-min sessions more effective than weekly</li>
+                        <li>Spaced repetition improves retention</li>
                     </ul>
                 </div>
                 <div class="tip-card">
-                    <h4>🗓️ Interactive Planning</h4>
+                    <h4>✝️ Bible-First Approach</h4>
                     <ul>
-                        <li>Click any subject cell to customize content</li>
-                        <li>Navigate between weeks for planning</li>
-                        <li>Track specific lesson progress</li>
-                        <li>Adapt to child's learning pace</li>
+                        <li>Scripture foundation sets the tone for learning</li>
+                        <li>Character building before academic building</li>
+                        <li>Spiritual wisdom guides all other subjects</li>
+                        <li>Creates reverent, focused learning atmosphere</li>
                     </ul>
                 </div>
                 <div class="tip-card">
-                    <h4>🇸🇦 KSA Schedule Benefits</h4>
+                    <h4>🧮 Math After Bible Strategy</h4>
                     <ul>
-                        <li>Sunday-Thursday aligns with local culture</li>
-                        <li>Breakfast family time builds connection</li>
-                        <li>Afternoon deep dives after lunch rest</li>
-                        <li>Thursday review prepares for weekend</li>
+                        <li>Mind is fresh and focused after devotion</li>
+                        <li>Logical thinking flows from spiritual grounding</li>
+                        <li>Peak concentration for challenging concepts</li>
+                        <li>God's order reflected in mathematical patterns</li>
                     </ul>
                 </div>
+                <div class="tip-card">
+                    <h4>🎯 Interactive Planning</h4>
+                    <ul>
+                        <li>Student participates in goal-setting process</li>
+                        <li>Weekly targets discussed and agreed upon</li>
+                        <li>Child ownership increases motivation</li>
+                        <li>Flexible adjustments based on progress</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h4>🎹 MAPEH Integration</h4>
+                    <ul>
+                        <li>Piano classes count as Music component</li>
+                        <li>Open slot ready for PE addition</li>
+                        <li>Art can be integrated into other subjects</li>
+                        <li>Health topics woven into Science lessons</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="weekly-summary">
+                <h3 id="weeklyHeader">Week 1</h3>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Target</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bible 1</td>
+                            <td><input type="text" class="editable-target" placeholder="Weekly goal..." data-subject="bible"></td>
+                        </tr>
+                        <tr>
+                            <td>Math 1</td>
+                            <td><input type="text" class="editable-target" placeholder="Weekly goal..." data-subject="math"></td>
+                        </tr>
+                        <tr>
+                            <td>Phonics</td>
+                            <td><input type="text" class="editable-target" placeholder="Weekly goal..." data-subject="phonics"></td>
+                        </tr>
+                        <tr>
+                            <td>Filipino 1</td>
+                            <td><input type="text" class="editable-target" placeholder="Weekly goal..." data-subject="filipino"></td>
+                        </tr>
+                        <tr>
+                            <td>French</td>
+                            <td><input type="text" class="editable-target" placeholder="Weekly goal..." data-subject="french"></td>
+                        </tr>
+                        <tr>
+                            <td>Science 1</td>
+                            <td><input type="text" class="editable-target" placeholder="Weekly goal..." data-subject="science"></td>
+                        </tr>
+                        <tr>
+                            <td>Spelling 1</td>
+                            <td><input type="text" class="editable-target" placeholder="Weekly goal..." data-subject="spelling"></td>
+                        </tr>
+                        <tr>
+                            <td>Araling P.</td>
+                            <td><input type="text" class="editable-target" placeholder="Weekly goal..." data-subject="araling"></td>
+                        </tr>
+                        <tr>
+                            <td>MAPEH</td>
+                            <td><input type="text" class="editable-target" placeholder="Weekly goal..." data-subject="mapeh"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -494,14 +923,56 @@
         </div>
     </div>
 
+    <!-- Modal for setting start date -->
+    <div id="dateModal" class="modal">
+        <div class="modal-content">
+            <h3>Set Homeschool Start Date</h3>
+            <p>Choose the Sunday that begins your first week of homeschooling:</p>
+            <input type="date" id="startDateInput" value="2024-08-17">
+            <div class="modal-buttons">
+                <button class="modal-btn cancel-btn" onclick="closeDateModal()">Cancel</button>
+                <button class="modal-btn save-btn" onclick="saveStartDate()">Set Date</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         let currentWeekOffset = 0;
         let currentEditingCell = null;
+        let startDate = new Date('2024-08-17'); // Default: August 17, 2024 (Saturday, but will adjust to Sunday)
+
+        // Date management functions
+        function adjustToSunday(date) {
+            const dayOfWeek = date.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            const daysToSubtract = dayOfWeek; // How many days to go back to Sunday
+            const sunday = new Date(date);
+            sunday.setDate(date.getDate() - daysToSubtract);
+            return sunday;
+        }
+
+        function formatDate(date) {
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            return `${months[date.getMonth()]} ${date.getDate()}`;
+        }
+
+        function updateWeekDates() {
+            const currentSunday = new Date(startDate);
+            currentSunday.setDate(startDate.getDate() + (currentWeekOffset * 7));
+            
+            const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday'];
+            days.forEach((day, index) => {
+                const currentDay = new Date(currentSunday);
+                currentDay.setDate(currentSunday.getDate() + index);
+                document.getElementById(`${day}-date`).textContent = formatDate(currentDay);
+            });
+        }
 
         // Week navigation
         function changeWeek(direction) {
             currentWeekOffset += direction;
             updateWeekDisplay();
+            updateWeekDates();
         }
 
         function updateWeekDisplay() {
@@ -604,13 +1075,131 @@
         `;
         document.head.appendChild(style);
 
+        // Notes functionality
+        function saveNotes() {
+            const notes = document.getElementById('teacherNotes').value;
+            const weekKey = `notes_week_${currentWeekOffset}`;
+            localStorage.setItem(weekKey, notes);
+            showNotification('Notes saved successfully!', 'success');
+        }
+
+        function clearNotes() {
+            if (confirm('Are you sure you want to clear all notes for this week?')) {
+                document.getElementById('teacherNotes').value = '';
+                const weekKey = `notes_week_${currentWeekOffset}`;
+                localStorage.removeItem(weekKey);
+                showNotification('Notes cleared!', 'info');
+            }
+        }
+
+        function loadNotes() {
+            const weekKey = `notes_week_${currentWeekOffset}`;
+            const savedNotes = localStorage.getItem(weekKey);
+            if (savedNotes) {
+                document.getElementById('teacherNotes').value = savedNotes;
+            } else {
+                document.getElementById('teacherNotes').value = '';
+            }
+        }
+
+        // Date modal functions
+        function setStartDate() {
+            document.getElementById('dateModal').style.display = 'block';
+        }
+
+        function closeDateModal() {
+            document.getElementById('dateModal').style.display = 'none';
+        }
+
+        function saveStartDate() {
+            const inputDate = new Date(document.getElementById('startDateInput').value);
+            startDate = adjustToSunday(inputDate);
+            
+            // Save to localStorage
+            localStorage.setItem('homeschool_start_date', startDate.toISOString());
+            
+            updateWeekDates();
+            closeDateModal();
+            showNotification('Start date updated successfully!', 'success');
+        }
+
+        // Load saved start date
+        function loadStartDate() {
+            const savedDate = localStorage.getItem('homeschool_start_date');
+            if (savedDate) {
+                startDate = new Date(savedDate);
+            } else {
+                // Default to August 17, 2024 adjusted to Sunday
+                startDate = adjustToSunday(new Date('2024-08-17'));
+            }
+        }
+
+        // Update week navigation to load notes and update dates
+        function changeWeek(direction) {
+            currentWeekOffset += direction;
+            updateWeekDisplay();
+            updateWeekDates();
+            loadNotes();
+            updateWeeklySummary();
+        }
+
+        // Weekly summary functions
+        function updateWeeklySummary() {
+            const weekNumber = currentWeekOffset + 1;
+            document.getElementById('weeklyHeader').textContent = `Week ${weekNumber}`;
+            loadWeeklyTargets();
+        }
+
+        function saveWeeklyTargets() {
+            const targets = {};
+            document.querySelectorAll('.editable-target').forEach(input => {
+                const subject = input.dataset.subject;
+                targets[subject] = input.value;
+            });
+            
+            const weekKey = `targets_week_${currentWeekOffset}`;
+            localStorage.setItem(weekKey, JSON.stringify(targets));
+        }
+
+        function loadWeeklyTargets() {
+            const weekKey = `targets_week_${currentWeekOffset}`;
+            const savedTargets = localStorage.getItem(weekKey);
+            
+            if (savedTargets) {
+                const targets = JSON.parse(savedTargets);
+                document.querySelectorAll('.editable-target').forEach(input => {
+                    const subject = input.dataset.subject;
+                    if (targets[subject]) {
+                        input.value = targets[subject];
+                    } else {
+                        input.value = '';
+                    }
+                });
+            } else {
+                // Clear all inputs for new week
+                document.querySelectorAll('.editable-target').forEach(input => {
+                    input.value = '';
+                });
+            }
+        }
+
+        // Auto-save targets when typing
+        document.querySelectorAll('.editable-target').forEach(input => {
+            input.addEventListener('input', saveWeeklyTargets);
+            input.addEventListener('blur', saveWeeklyTargets);
+        });
+
         // Initialize
+        loadStartDate();
         updateWeekDisplay();
+        updateWeekDates();
+        loadNotes();
+        updateWeeklySummary();
         
         // Show welcome message
         setTimeout(() => {
             showNotification('Click any subject cell to customize content!', 'info');
         }, 1000);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d693fab2a66d36',t:'MTc1NDkwMzE5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d6ce65e051bb31',t:'MTc1NDkwNTU5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
